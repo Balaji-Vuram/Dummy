@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  jenkins:
+    build:
+      context: ./
+      dockerfile: ./jenkinsDockerfile
+    user: "0"
+    ports:
+      - "10090:8080"
+      - "50000:50000"
+    environment:
+      - DOCKER_HOST:10.0.2.15
+    volumes:
+      - ./var/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
+    container_name: samsclubjenkinstraining1
+   
+
